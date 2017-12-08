@@ -15,6 +15,8 @@
     <header class="site-header">
       <h1 class="logo">Crowdfunder</h1>
 
+      <p> <%= link_to("Home", root_path) %> </p>
+
       <nav class="site-nav">
         <% if current_user %>
           <%= link_to "Logout", :logout, method: :delete %>
