@@ -40,4 +40,14 @@ class ProjectTest < ActiveSupport::TestCase
     )
   end
 
+  def setup
+     @user = new_user
+     @project = new_project
+   end
+
+  def test_end_date_is_after_start_date
+    result = @project.end_date_is_after_start_date
+
+    assert result
+  end
 end
