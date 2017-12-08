@@ -23,12 +23,14 @@ class ProjectsController < ApplicationController
     @project.start_date = params[:project][:start_date]
     @project.end_date = params[:project][:end_date]
     @project.image = params[:project][:image]
+    @project.user = current_user
 
     if @project.save
+      flash[:notice] = "Project created successfully!"
       redirect_to projects_url
     else
-      render :new
+      render 'new'
     end
-   end
+  end
 
 end
