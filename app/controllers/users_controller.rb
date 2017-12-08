@@ -11,8 +11,9 @@ class UsersController < ApplicationController
     @user.password = params[:user][:password]
     @user.password_confirmation = params[:user][:password_confirmation]
     if @user.save
-      auto_login(@user)
       redirect_to projects_url
+      auto_login(@user)
+      flash[:notice] = "Account successfully created!"
     else
       render 'new'
     end
