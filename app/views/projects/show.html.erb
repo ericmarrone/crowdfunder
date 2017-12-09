@@ -4,7 +4,7 @@
   <%= image_tag @project.image %>
 <% end %>
 
-<% if @project.user_ids.include?(current_user.id) %>
+<% if current_user && @project.user_ids.include?(current_user.id) %>
   <p>Thank you so much for supporting our project!</p>
 <% end %>
 
