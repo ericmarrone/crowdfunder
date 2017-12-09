@@ -56,8 +56,4 @@ class ProjectTest < ActiveSupport::TestCase
     result = @project.end_date_before_start_date?
     assert result
   end
-
-  def test_user_ids_array_contains_pledge_user_id
-
-  end
 end
