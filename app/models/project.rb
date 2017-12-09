@@ -16,7 +16,9 @@ class Project < ActiveRecord::Base
 
   def user_ids
     pledges.all.reduce([]) do |user_id_array, pledge|
-      user_id_array << pledge.user_id
+      if !user_id_array.include?(pledge.id)
+        user_id_array << pledge.user_id
+      end
     end
   end
 end

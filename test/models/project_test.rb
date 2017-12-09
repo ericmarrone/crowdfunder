@@ -58,4 +58,8 @@ class ProjectTest < ActiveSupport::TestCase
 
     assert result
   end
+
+  def test_user_ids_array_contains_pledge_user_id
+
+  end
 end
