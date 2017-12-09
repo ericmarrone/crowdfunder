@@ -13,4 +13,10 @@ class Project < ActiveRecord::Base
       errors.add(:end_date, "must be after start date")
     end
   end
+
+  def user_ids
+    pledges.all.reduce([]) do |user_id_array, pledge|
+      user_id_array << pledge.user_id
+    end
+  end
 end
