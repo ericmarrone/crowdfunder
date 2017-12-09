@@ -48,6 +48,6 @@ class ProjectTest < ActiveSupport::TestCase
   def test_end_date_is_after_start_date
     result = @project.end_date_is_after_start_date
 
-    assert result
+    refute result
   end
 end
