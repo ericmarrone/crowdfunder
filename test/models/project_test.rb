@@ -57,4 +57,10 @@ class ProjectTest < ActiveSupport::TestCase
     assert result
   end
 
+  test 'project is invalid with negative goal number' do
+    @project.goal = 200
+    @project.save
+    assert @project.invalid?, 'Project goal cannot be negative.'
+  end
+
 end
