@@ -37,7 +37,7 @@ class ProjectTest < ActiveSupport::TestCase
       start_date:  Date.today,
       end_date:    Date.today + 1.month,
       goal:        50000,
-      user_id: 1
+      user_id: new_user
     )
   end
 
@@ -52,7 +52,6 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
   def test_end_date_before_start_date
-    @project.start_date = Date.today
     @project.end_date = Date.today - 1.month
     result = @project.end_date_before_start_date?
     assert result
