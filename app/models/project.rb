@@ -12,6 +12,5 @@ class Project < ActiveRecord::Base
     if end_date <= start_date
       errors.add(:end_date, "must be after start date")
     end
-    end_date <= start_date
   end
 end
