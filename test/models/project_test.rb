@@ -46,10 +46,15 @@ class ProjectTest < ActiveSupport::TestCase
     @project = new_project
   end
 
-  def test_end_date_is_after_start_date
-    @user = self.new_user
-    @project = new_project
-    result = @project.end_date_is_after_start_date
+  def test_end_date_after_start_date
+    result = @project.end_date_before_start_date?
+    refute result
+  end
+
+  def test_end_date_before_start_date
+    @project.start_date = Date.today
+    @project.end_date = Date.today - 1.month
+    result = @project.end_date_before_start_date?
     assert result
   end
 
