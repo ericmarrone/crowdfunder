@@ -7,8 +7,10 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email must be unique" do
+    @user.email = "john@gmail.com"
     @user.save
     @user_2 = build(:user)
+    @user_2.email = "john@gmail.com"
     refute @user_2.valid?
   end
 
