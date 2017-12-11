@@ -2,6 +2,33 @@ Pledge.destroy_all
 Reward.destroy_all
 User.destroy_all
 Project.destroy_all
+Category.destroy_all
+Update.destroy_all
+
+
+Category.create!(name:"Technology", description: "Tech projects")
+Category.create!(name:"Finance", description: "Finance projects")
+Category.create!(name:"Health", description: "Health projects")
+Category.create!(name:"Food", description: "Food projects")
+Category.create!(name:"Art", description: "Art projects")
+
+
+5.times do
+  user = User.create!(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.free_email,
+    password: 'password',
+    password_confirmation: 'password'
+  )
+
+  5.times do
+    user.updates.create!(
+      title: Faker::App.name,
+      content: Faker::Lorem.paragraph
+    )
+  end
+end
 
 10.times do
   project = Project.create!(
@@ -9,7 +36,9 @@ Project.destroy_all
               description: Faker::Lorem.paragraph,
               goal: rand(100000),
               start_date: Time.now.utc - rand(60).days,
-              end_date: Time.now.utc + rand(10).days
+              end_date: Time.now.utc + rand(10).days,
+              category: Category.all.sample,
+              user: User.all.sample
             )
 
   5.times do
@@ -20,21 +49,18 @@ Project.destroy_all
   end
 end
 
-5.times do
-  User.create!(
-    first_name: Faker::Name.first_name,
-    last_name: Faker::Name.last_name,
-    email: Faker::Internet.free_email,
-    password: 'password',
-    password_confirmation: 'password'
-  )
-end
 
 20.times do
   project = Project.all.sample
 
   Pledge.create!(
-    user: User.all.sample,
+    user: User.create!(
+      first_name: Faker::Name.first_name,
+      last_name: Faker::Name.last_name,
+      email: Faker::Internet.free_email,
+      password: 'password',
+      password_confirmation: 'password'
+    ),
     project: project,
     dollar_amount: project.rewards.sample.dollar_amount + rand(10)
   )
