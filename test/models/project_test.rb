@@ -2,67 +2,35 @@ require 'test_helper'
 
 class ProjectTest < ActiveSupport::TestCase
 
+  def setup
+    @project = build(:project)
+  end
+
   test 'valid project can be created' do
-    skip
-    owner = new_user
-    owner.save
-    project = new_project
-    project.user = owner
-    project.save
-    assert project.valid?
-    assert project.persisted?
-    assert project.user
+    @project.save
+    assert @project.valid?
+    assert @project.persisted?
+    assert @project.user
   end
 
   test 'project is invalid without owner' do
-    skip
-    project = new_project
-    project.user = nil
-    project.save
-    assert project.invalid?, 'Project should not save without owner.'
+    @project.user = nil
+    @project.save
+    assert @project.invalid?, 'Project should not save without owner.'
   end
 
-  def new_user
-    User.new(
-      first_name:            'Sally',
-      last_name:             'Lowenthal',
-      email:                 'sally@example.com',
-      password:              'passpass',
-      password_confirmation: 'passpass'
-    )
-  end
-
-  def new_project
-    Project.new(
-      title:       'Cool new boardgame',
-      description: 'Trade sheep',
-      start_date:  Date.today,
-      end_date:    Date.today + 1.month,
-      goal:        50000,
-      user_id:     new_user
-    )
-  end
-
-  def setup
-    @user = new_user
-    @project = new_project
-  end
-
-  def test_end_date_after_start_date
-    skip
+  test "end date after start date" do
     result = @project.end_date_before_start_date?
     refute result
   end
 
-  def test_end_date_before_start_date
-    skip
+  test "end date before start date" do
     @project.end_date = Date.today - 1.month
     result = @project.end_date_before_start_date?
     assert result
   end
 
   test 'project is invalid with negative goal number' do
-    skip
     @project.goal = -200
     assert @project.invalid?, 'Project goal cannot be negative.'
   end
