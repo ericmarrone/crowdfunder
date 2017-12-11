@@ -37,7 +37,7 @@ class ProjectTest < ActiveSupport::TestCase
       start_date:  Date.today,
       end_date:    Date.today + 1.month,
       goal:        50000,
-      user_id: new_user
+      user_id:     new_user
     )
   end
 
