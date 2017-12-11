@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <%= stylesheet_link_tag    "https://fonts.googleapis.com/css?family=Josefin+Sans:700|Libre+Baskerville" %>
-    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= stylesheet_link_tag "https://fonts.googleapis.com/css?family=Josefin+Sans:700|Libre+Baskerville" %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
     <%= csrf_meta_tags %>
   </head>
@@ -23,8 +23,10 @@
           <p> <%= link_to "My Account", user_path(current_user) %> </p>
           <p> <%= link_to "Logout", :logout, method: :delete %> </p>
         <% else %>
+
           <p> <%= link_to "Register", new_user_path %> </p>
           <p> <%= link_to "Login", :login %> </p>
+
         <% end %>
       </nav>
     </header>
