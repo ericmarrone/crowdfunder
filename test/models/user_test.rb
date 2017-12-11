@@ -1,24 +1,31 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
+
+  def setup
+    @user = build(:user)
+  end
+
   test "email must be unique" do
-    user = User.create(email: "bettymaker@gmail.com", password: "12345678", password_confirmation: "12345678")
-    user2 = User.new(email: "bettymaker@gmail.com", password: "00000000", password_confirmation: "00000000")
-    refute user2.valid?
+    @user.email = "john@gmail.com"
+    @user.save
+    @user_2 = build(:user)
+    @user_2.email = "john@gmail.com"
+    refute @user_2.valid?
   end
 
   test "user must include password_confirmation on create" do
-    user = User.new(email: "bettymaker@gmail.com", password: "12345678")
-    refute user.valid?
+    @user.password_confirmation = nil
+    refute @user.valid?
   end
 
   test "password must match confirmation" do
-    user = User.new(email: "bettymaker@gmail.com", password: "12345678", password_confirmation: "87654321")
-    refute user.valid?
+    @user.password = nil
+    refute @user.valid?
   end
 
   test "password must be at least 8 characters long" do
-    user = User.new(email: "bettymaker@gmail.com", password: "1234", password_confirmation: "1234")
-    refute user.valid?
+    @user.password = "123"
+    refute @user.valid?
   end
 end
