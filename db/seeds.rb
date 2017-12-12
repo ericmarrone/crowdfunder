@@ -38,7 +38,8 @@ end
               start_date: Time.now.utc - rand(60).days,
               end_date: Time.now.utc + rand(10).days,
               category: Category.all.sample,
-              user: User.all.sample
+              user: User.all.sample,
+              image: "https://picsum.photos/1280/720/?random"
             )
 
   5.times do
