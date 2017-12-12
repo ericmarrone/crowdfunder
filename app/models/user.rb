@@ -23,9 +23,4 @@ class User < ActiveRecord::Base
     end
     projects_backed
   end
-
-  def dollars_donated
-
-  end
-
 end
