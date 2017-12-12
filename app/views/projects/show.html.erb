@@ -9,6 +9,50 @@
   <p>Thank you so much for supporting our project!</p>
 <% end %>
 
+<% if current_user == @project.user && @project.pledges.length > 0 %>
+  <h2>Who's Backed Your Project?</h2>
+  <% backer_array = [] %>
+  <% @project.pledges.each do |pledge| %>
+    <% unless backer_array.include?(pledge.user.full_name) %>
+      <% backer_array << pledge.user.full_name %>
+    <% end %>
+  <% end %>
+  <% backer_array.each do |backer| %>
+    <p> <%= backer %> </p>
+  <% end %>
+<% end %>
+
+<h2>Updates</h2>
+
+<% @user.updates.each do |update| %>
+  <h3><%= update.title %></h3>
+  <p><%= update.content %></p>
+<% end %>
+
+<div class="new_update_wrapper">
+  <% if current_user == @project.user %>
+
+  <h3>Add an Update</h3>
+
+  <%= form_for @update, url: project_updates_url(@project) do |f| %>
+    <div class="field">
+      <p><%= f.label :title %></p>
+      <p><%= f.text_field :title %></p>
+    </div>
+
+    <div class="field">
+      <p><%= f.label :content %></p>
+      <p><%= f.text_field :content %></p>
+    </div>
+
+    <div class="field">
+      <p><%= f.submit  %></p>
+    </div>
+    <% end %>
+  <% end %>
+</div>
+
+<h2>About <%= @project.title %> </h2>
 <p><%= @project.description %></p>
 <p>Progress: <%= number_to_currency(@project.pledges.sum(:dollar_amount)) %> / <%= number_to_currency(@project.goal) %></p>
 <p>Fundraising starts: <%= @project.start_date.strftime("%A %b %d %Y") %></p>

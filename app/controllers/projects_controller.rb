@@ -8,6 +8,8 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    @user    = @project.user
+    @update  = Update.new
   end
 
   def new
