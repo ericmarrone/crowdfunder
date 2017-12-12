@@ -49,4 +49,11 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal(actual, expected)
   end
 
+  test "user ids does not fill without pledges" do
+    actual = @project.user_ids
+    expected = []
+
+    assert_equal(actual, expected)
+  end
+
 end
