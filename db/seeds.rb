@@ -21,13 +21,6 @@ Category.create!(name:"Art", description: "Art projects")
     password: 'password',
     password_confirmation: 'password'
   )
-
-  5.times do
-    user.updates.create!(
-      title: Faker::App.name,
-      content: Faker::Lorem.paragraph
-    )
-  end
 end
 
 10.times do
@@ -64,5 +57,15 @@ end
     ),
     project: project,
     dollar_amount: project.rewards.sample.dollar_amount + rand(10)
+  )
+end
+
+20.times do
+  project = Project.all.sample
+    Update.create!(
+    title: Faker::App.name,
+    content: Faker::Lorem.paragraph,
+    project: project,
+    user: project.user
   )
 end
