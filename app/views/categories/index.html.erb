@@ -1,0 +1,13 @@
+<% @categories.each do |category| %>
+  <div class="category">
+    <%= category.name %>
+    <ul>
+
+      <% category.projects.each do |project| %>
+        <li>
+          <%= link_to("#{project.title}", project) %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+<%end %>
