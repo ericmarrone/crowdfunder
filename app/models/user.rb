@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   def projects_backed
     projects_backed = []
     self.pledges.each do |pledge|
-      if !projects.include?(pledge.project)
+      unless projects_backed.include?(pledge.project)
         projects_backed << pledge.project
       end
     end
