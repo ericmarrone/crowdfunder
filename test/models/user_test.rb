@@ -37,4 +37,17 @@ class UserTest < ActiveSupport::TestCase
     assert_equal(actual, expected)
   end
 
+  test "projects backed populates with the users backed projects" do
+    @project = create(:project)
+    @pledge = build(:pledge)
+    @pledge.project = @project
+    @pledge.user = @user
+    @pledge.save
+
+    actual = @user.projects_backed
+    expected = [@project]
+
+    assert_equal(actual, expected)
+  end
+
 end
