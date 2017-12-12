@@ -14,15 +14,4 @@ class Project < ActiveRecord::Base
       errors.add(:end_date, "must be after start date")
     end
   end
-
-  def user_ids
-    user_id_array = []
-
-    pledges.all.each do |pledge|
-      unless user_id_array.include?(pledge.user_id)
-        user_id_array << pledge.user_id
-      end
-    end
-    user_id_array
-  end
 end

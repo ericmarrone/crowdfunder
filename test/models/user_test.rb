@@ -34,7 +34,7 @@ class UserTest < ActiveSupport::TestCase
 
     expected = @user.first_name + " " + @user.last_name
 
-    assert_equal(actual, expected)
+    assert_equal(expected, actual)
   end
 
   test "projects backed populates with the users backed projects" do
