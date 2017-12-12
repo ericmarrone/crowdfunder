@@ -14,4 +14,18 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def projects_backed
+    projects_backed = []
+    self.pledges.each do |pledge|
+      if !projects.include?(pledge.project)
+        projects_backed << pledge.project
+      end
+    end
+    projects_backed
+  end
+
+  def dollars_donated
+
+  end
+
 end
