@@ -9,6 +9,20 @@
   <p>Thank you so much for supporting our project!</p>
 <% end %>
 
+<% if current_user == @project.user && @project.pledges.length > 0 %>
+  <h2>Who's Backed Your Project?</h2>
+  <% backer_array = [] %>
+  <% @project.pledges.each do |pledge| %>
+    <% unless backer_array.include?(pledge.user.full_name) %>
+      <% backer_array << pledge.user.full_name %>
+    <% end %>
+  <% end %>
+  <% backer_array.each do |backer| %>
+    <p> <%= backer %> </p>
+  <% end %>
+<% end %>
+
+<h2>About <%= @project.title %> </h2>
 <p><%= @project.description %></p>
 <p>Progress: <%= number_to_currency(@project.pledges.sum(:dollar_amount)) %> / <%= number_to_currency(@project.goal) %></p>
 <p>Fundraising starts: <%= @project.start_date.strftime("%A %b %d %Y") %></p>
