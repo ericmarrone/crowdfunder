@@ -1,0 +1,18 @@
+<h1><%= @category.name %></h1>
+<% @category.projects.each do |project| %>
+  <div>
+    <h2><%= project.title %></h2>
+    <h3>By - <%= link_to(project.user.full_name, user_path(project.user)) %> </h3>
+    <% if project.image.present? %>
+      <%= image_tag project.image %>
+    <% end %>
+    <p><%= project.description %></p>
+    <p>Progress: <%= number_to_currency(project.pledges.sum(:dollar_amount)) %> / <%= number_to_currency(project.goal) %></p>
+    <p>Fundraising starts: <%= project.start_date.strftime("%A %b %d %Y") %></p>
+    <p>Deadline: <%= project.end_date.strftime("%A %b %d %Y") %></p>
+
+    <time class="project-days-left">
+      <%= icon('clock-o') %>
+      <%= "#{time_ago_in_words(project.end_date)} #{( project.end_date > Time.now.utc ) ? 'remaining' : 'past deadline'}" %></time>
+  </div>
+<% end %>
