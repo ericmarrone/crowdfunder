@@ -35,4 +35,18 @@ class ProjectTest < ActiveSupport::TestCase
     assert @project.invalid?, 'Project goal cannot be negative.'
   end
 
+  test "user ids populates correctly" do
+    @user = create(:user)
+    @pledge = build(:pledge)
+    @pledge.user = @user
+    @pledge.project = @project
+    @pledge.save
+    @project.save
+
+    actual = @project.user_ids
+    expected = [@user.id]
+
+    assert_equal(actual, expected)
+  end
+
 end
