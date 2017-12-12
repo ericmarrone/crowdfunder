@@ -28,4 +28,26 @@ class UserTest < ActiveSupport::TestCase
     @user.password = "123"
     refute @user.valid?
   end
+
+  test "full name is given properly" do
+    actual = @user.full_name
+
+    expected = @user.first_name + " " + @user.last_name
+
+    assert_equal(actual, expected)
+  end
+
+  test "projects backed populates with the users backed projects" do
+    @project = create(:project)
+    @pledge = build(:pledge)
+    @pledge.project = @project
+    @pledge.user = @user
+    @pledge.save
+
+    actual = @user.projects_backed
+    expected = [@project]
+
+    assert_equal(actual, expected)
+  end
+
 end
