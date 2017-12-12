@@ -34,4 +34,15 @@ class ProjectTest < ActiveSupport::TestCase
     @project.goal = -200
     assert @project.invalid?, 'Project goal cannot be negative.'
   end
+
+  test 'start date is in future' do
+    result = @project.start_date_not_in_future?
+    refute result
+  end
+
+  test 'start date is in past' do
+    @project.start_date = Time.now.utc - 2.days
+    result = @project.start_date_not_in_future?
+    assert result
+  end
 end
