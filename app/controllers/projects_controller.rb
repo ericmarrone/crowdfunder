@@ -13,6 +13,7 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
     @project.rewards.build
+    @categories = Category.all
   end
 
   def create
@@ -24,6 +25,7 @@ class ProjectsController < ApplicationController
     @project.end_date = params[:project][:end_date]
     @project.image = params[:project][:image]
     @project.user = current_user
+    @project.category_id = params[:project][:category]
 
     if @project.save
       flash[:notice] = "Project created successfully!"

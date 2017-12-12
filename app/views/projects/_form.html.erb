@@ -29,8 +29,10 @@
     <%= f.date_field :end_date %>
   </div>
   <div>
-    <%= f.label :category %>
-    <%= f.date_field :category %>
+    <%@categories.all.each do |category| %>
+      <%= f.radio_button :category, category.id %>
+      <%= f.label :category, category.name %>
+    <% end %>
   </div>
 
   <%= f.submit %>
