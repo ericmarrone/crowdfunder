@@ -28,4 +28,13 @@ class UserTest < ActiveSupport::TestCase
     @user.password = "123"
     refute @user.valid?
   end
+
+  test "full name is given properly" do
+    actual = @user.full_name
+
+    expected = @user.first_name + " " + @user.last_name
+
+    assert_equal(actual, expected)
+  end
+
 end
