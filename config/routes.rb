@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+
+  get 'comments/update'
+
+  get 'comments/destroy'
+
   get 'create/update'
 
   root "categories#index"
