@@ -28,4 +28,10 @@ class Project < ActiveRecord::Base
       end
     end
   end
+
+  def self.total_donations_to_successful_projects
+    all_successful_projects.reduce(0) do |total_dollars, successful_project|
+      total_dollars += successful_project.pledges.sum(:dollar_amount)
+    end
+  end
 end
