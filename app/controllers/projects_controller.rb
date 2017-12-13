@@ -19,6 +19,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
+    @categories = Category.all
     @project = Project.new
     @project.title = params[:project][:title]
     @project.description = params[:project][:description]
