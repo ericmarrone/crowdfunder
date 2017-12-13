@@ -1,3 +1,4 @@
+#remove validation for project start date before running db:reset
 Pledge.destroy_all
 Reward.destroy_all
 User.destroy_all
