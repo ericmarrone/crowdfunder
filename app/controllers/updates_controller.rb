@@ -5,6 +5,7 @@ class UpdatesController < ApplicationController
     @update.title = params[:update][:title]
     @update.content = params[:update][:content]
     @update.user = current_user
+    @update.project_id = params[:project_id]
 
     if @update.save
       flash.now[:success] = "Your update has been added!"
