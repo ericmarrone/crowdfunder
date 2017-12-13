@@ -15,11 +15,11 @@
     <header class="site-header">
       <h1 class="logo">Crowdfunder</h1>
 
-      <p> <%= link_to "Home", root_path %> </p>
-      <p> <%= link_to "New Project", new_project_path %> </p>
-      <p> <%= link_to "All Projects", projects_path %> </p>
-
       <nav class="site-nav">
+        <p> <%= link_to "Home", root_path %> </p>
+        <p> <%= link_to "New Project", new_project_path %> </p>
+        <p> <%= link_to "All Projects", projects_path %> </p>
+
         <% if current_user %>
           <p> <%= link_to "My Account", user_path(current_user) %> </p>
           <p> <%= link_to "Logout", :logout, method: :delete %> </p>
