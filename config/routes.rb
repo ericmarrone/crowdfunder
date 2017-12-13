@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'comments/create'
+
+  get 'comments/update'
+
+  get 'comments/destroy'
+
   get 'create/update'
 
   root "categories#index"
@@ -10,6 +16,7 @@ Rails.application.routes.draw do
     resources :pledges, only: [:create]
     resources :rewards, only: [:new, :create, :destroy]
     resources :updates, only: [:create, :update]
+    resources :comments, except: [:index, :new, :show]
   end
   resources :users, only: [:new, :show, :create]
   resources :user_sessions, only: [:create]
