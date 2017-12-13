@@ -17,6 +17,11 @@ body {
 
 a {
   text-decoration: none;
+  color: white;
+}
+
+a:visited {
+  color: white;
 }
 
 ul {
@@ -58,10 +63,30 @@ figure {
     font-weight: 900;
 }
 
+.project-link {
+  background-color: #727773;
+}
+
 h3 {
     line-height: 25px;
     font-size: 1.6em;
     text-decoration: underline;
+}
+
+h2 {
+    color: white;
+}
+
+p {
+    color: white;
+}
+
+h3 {
+    color: white;
+}
+
+h1 {
+    color: white;
 }
 
 .home_display_wrapper {
