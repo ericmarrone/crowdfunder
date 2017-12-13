@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :comment do
-    title "MyString"
-    user_id 1
-    project_id 1
+    title "Comment"
+    project
+    user
     comment "MyText"
   end
 end
