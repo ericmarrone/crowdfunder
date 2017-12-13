@@ -46,6 +46,21 @@ figure {
   }
 }
 
+.flash-notice {
+  color: white;
+  font-weight: 900;
+}
+
+.flash-alert {
+  color: white;
+  font-weight: 900;
+}
+
+.flash-success {
+  color: white;
+  font-weight: 900;
+}
+
 .site-header {
   background-color: #727773;
   border-bottom: solid;
@@ -99,6 +114,7 @@ h1 {
   padding: 25px;
   border: solid;
   border-radius: 20px;
+  border-width: 2px;
   max-height: 380px;
   min-height: 380px;
   margin: 5%;
