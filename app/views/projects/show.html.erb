@@ -85,7 +85,13 @@
 
 <%= link_to "Add new reward", new_project_reward_path(@project) %>
 
-<h4>Make a reservation</h4>
+<h4>Comments/h4>
+<% @project.comments.each do |comment| %>
+  <h4><%= comment.title  %></h4>
+  <p><%= comment.created_at %></p>
+  <p><%= comment.comment %></p>
+<%end %>
 
-
-<%= render 'comments/form', project: @project, comment: @comment %>
+<%= if @project.users.include?(current_user) %>
+  <%= render 'comments/form', project: @project, comment: @comment %>
+<% end %>
