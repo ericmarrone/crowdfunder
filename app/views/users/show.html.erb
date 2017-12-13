@@ -5,11 +5,13 @@
   <%= link_to "#{project.title}", project_path(project) %>
 <% end %>
 
-<h3><%= @user.first_name %> has backed <%= "#{@user.projects_backed.length}" %> projects, totaling <%= "#{@user.pledges.sum(:dollar_amount)}" %> dollars of donations! </h3>
+<% if @user.projects_backed.length > 0 %>
+  <h3><%= @user.first_name %> has backed <%= "#{@user.projects_backed.length}" %> projects, totaling <%= "#{@user.pledges.sum(:dollar_amount)}" %> dollars of donations! </h3>
 
-<ul>
-  <% @user.pledges.each do |pledge| %>
-    <li>Project Name: <%= link_to "#{pledge.project.title}", project_path(pledge.project) %> </li>
-    <li>Dollars Donated: <%= pledge.dollar_amount %> </li><br>
-  <% end %>
-</ul>
+  <ul>
+    <% @user.pledges.each do |pledge| %>
+      <li>Project Name: <%= link_to "#{pledge.project.title}", project_path(pledge.project) %> </li>
+      <li>Dollars Donated: <%= pledge.dollar_amount %> </li><br>
+    <% end %>
+  </ul>
+<% end %>
