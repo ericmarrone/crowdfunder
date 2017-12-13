@@ -10,6 +10,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @user    = @project.user
     @update  = Update.new
+    @comment = Comment.new
   end
 
   def new
