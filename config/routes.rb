@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'create/update'
 
-  root "projects#index"
+  root "categories#index"
 
   get 'login' => 'user_sessions#new', :as => :login
   delete 'logout' => 'user_sessions#destroy', :as => :logout
