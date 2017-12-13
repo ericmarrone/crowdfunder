@@ -84,3 +84,8 @@
 <% end %>
 
 <%= link_to "Add new reward", new_project_reward_path(@project) %>
+
+<h4>Make a reservation</h4>
+
+
+<%= render 'comments/form', project: @project, comment: @comment %>
