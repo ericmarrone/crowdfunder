@@ -24,9 +24,11 @@
 
 <h2>Updates</h2>
 
-<% @project.updates.each do |update| %>
-  <h3><%= update.title %></h3>
-  <p><%= update.content %></p>
+<% if current_user == @project.user || @project.users.include?(current_user) %>
+  <% @project.updates.reverse.each do |update| %>
+    <h3><%= update.title %></h3>
+    <p><%= update.content %></p>
+  <% end %>
 <% end %>
 
 <div class="new_update_wrapper">
