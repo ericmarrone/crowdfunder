@@ -98,7 +98,7 @@
   <% end %>
 <%end %>
 
-<h3>Add comment</h3>
 <% if @project.users.include?(current_user) %>
+  <h3>Add comment</h3>
   <%= render 'comments/form', project: @project, comment: @comment %>
 <% end %>
