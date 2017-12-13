@@ -15,4 +15,17 @@ class Project < ActiveRecord::Base
       errors.add(:end_date, "must be after start date")
     end
   end
+
+  def total_dollars_raised
+    pledges.sum(:dollar_amount)
+  end
+
+  def self.all_successful_projects
+    finished_projects = where("end_date < ?", Time.now)
+    finished_projects.reduce([]) do |successful_projects, finished_project|
+      if finished_project.goal <= finished_project.total_dollars_raised
+        successful_projects << finished_project
+      end
+    end
+  end
 end
