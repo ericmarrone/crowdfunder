@@ -24,9 +24,11 @@
 
 <h2>Updates</h2>
 
-<% @project.updates.each do |update| %>
-  <h3><%= update.title %></h3>
-  <p><%= update.content %></p>
+<% if current_user == @project.user || @project.users.include?(current_user) %>
+  <% @project.updates.reverse.each do |update| %>
+    <h3><%= update.title %></h3>
+    <p><%= update.content %></p>
+  <% end %>
 <% end %>
 
 <div class="new_update_wrapper">
@@ -34,7 +36,7 @@
 
   <h3>Add an Update</h3>
 
-  <%= form_for @update, url: project_updates_url(@project) do |f| %>
+  <%= form_for [@project, Update.new] do |f| %>
     <div class="field">
       <p><%= f.label :title %></p>
       <p><%= f.text_field :title %></p>
