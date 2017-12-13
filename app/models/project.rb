@@ -5,11 +5,12 @@ class Project < ActiveRecord::Base
   has_many :users, through: :pledges # backers
   belongs_to :user # project owner
   belongs_to :category
+  has_many :comments
 
   validates :title, :user_id, :description, :goal, :start_date, :end_date, presence: true
   validates :goal, numericality: { :greater_than_or_equal_to => 1, message: " must be a number greater than zero." }
   validate :end_date_before_start_date?
-  validate :start_date_not_in_future?, on: :create
+  # validate :start_date_not_in_future?, on: :create
 
   def end_date_before_start_date?
     if end_date <= start_date

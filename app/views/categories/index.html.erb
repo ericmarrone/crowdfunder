@@ -1,7 +1,7 @@
 <!-- How much has been donated to successful projects? -->
 
 <h3>Crowdfunder is home to <%= "#{@projects.length}" %> projects and counting!</h3>
-<% if Project.all_successful_projects.length > 0 %>
+<% if Project.all_successful_projects %>
   <h3><%= Project.all_successful_projects.length %> projects have received funding so far, totaling <%= "#{Project.total_donations_to_successful_projects}" %> dollars raised!</h3>
 <% end %>
 

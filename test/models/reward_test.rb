@@ -26,4 +26,11 @@ class RewardTest < ActiveSupport::TestCase
     assert @reward.new_record?, 'Reward should not save without a description'
   end
 
+  test 'A reward cannot be created with a negative dollar amount' do
+    @reward.dollar_amount = -100
+    @reward.save
+    assert @reward.invalid?, 'Reward should be invalid with negative dollar amount'
+    assert @reward.new_record?, 'Reward should not save with negative dollar amount'
+  end
+
 end
