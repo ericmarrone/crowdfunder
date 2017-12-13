@@ -8,6 +8,26 @@ html {
   box-sizing: border-box;
 }
 
+body {
+  background-image: url('https://picsum.photos/g/1366/768/?blur');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  list-style: none;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -17,6 +37,62 @@ figure {
   margin: 0;
 
   & > img {
-    display: block;
+  display: block;
   }
+}
+
+.site-header {
+  background-color: #727773;
+  border-bottom: solid;
+  border-bottom-width: 1px;
+}
+
+.logo {
+  text-decoration: underline;
+}
+
+.site-nav > p {
+    display: inline-block;
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: 900;
+}
+
+h3 {
+    line-height: 25px;
+    font-size: 1.6em;
+    text-decoration: underline;
+}
+
+.home_display_wrapper {
+    text-align: center;
+}
+
+.category {
+  vertical-align: top;
+  display: inline-block;
+  padding: 25px;
+  border: solid;
+  border-radius: 20px;
+  max-height: 380px;
+  min-height: 380px;
+  margin: 5%;
+  margin-bottom: 0;
+  background-color: #727772;
+}
+
+.category_image {
+  max-width: 200px;
+}
+
+h4.category_title {
+  font-size: 1.2em;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 10px;
+  text-decoration-line: underline;
+}
+
+.category_entry {
+  font-weight: 600;
 }

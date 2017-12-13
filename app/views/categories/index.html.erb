@@ -1,20 +1,23 @@
-<!-- How much has been donated to successful projects? -->
+<div class="home_display_wrapper">
+  <h3>Crowdfunder is home to <%= "#{@projects.length}" %> projects and counting!</h3>
+  <% if Project.all_successful_projects %>
+    <h3><%= Project.all_successful_projects.length %> projects have received funding so far, totaling <%= "#{Project.total_donations_to_successful_projects}" %> dollars raised!</h3>
+  <% end %>
 
-<h3>Crowdfunder is home to <%= "#{@projects.length}" %> projects and counting!</h3>
-<% if Project.all_successful_projects.length > 0 %>
-  <h3><%= Project.all_successful_projects.length %> projects have received funding so far, totaling <%= "#{Project.total_donations_to_successful_projects}" %> dollars raised!</h3>
-<% end %>
+  <% @categories.each do |category| %>
+    <div class="category">
+      <div class="category_image">
+        <%= image_tag category.image %>
+      </div><br>
+      <h4 class='category_title'><%= category.name %></h4>
+      <ul>
 
-<% @categories.each do |category| %>
-  <div class="category">
-    <%= category.name %>
-    <ul>
-
-      <% category.projects.each do |project| %>
-        <li>
-          <%= link_to("#{project.title}", project) %>
-        </li>
-      <% end %>
-    </ul>
-  </div>
-<%end %>
+        <% category.projects.each do |project| %>
+          <li class='category_entry'>
+            <%= link_to("#{project.title}", project) %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <%end %>
+</div>
