@@ -6,6 +6,7 @@
 
 html {
   box-sizing: border-box;
+  text-shadow: 1px 1px 2px black;
 }
 
 body {
@@ -82,9 +83,13 @@ figure {
   background-color: #727773;
 }
 
-h3 {
+.home_display_wrapper > h3 {
     line-height: 25px;
     font-size: 1.6em;
+    text-decoration: underline;
+}
+
+h3 {
     text-decoration: underline;
 }
 
