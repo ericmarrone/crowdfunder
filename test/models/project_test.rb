@@ -179,7 +179,6 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
   test 'total donations for successful projects where one project does not meet goal' do
-    skip
     @project1 = create(:project)
     @project1.start_date = Time.now.utc - 10.days
     @project1.end_date = Time.now.utc - 1.days

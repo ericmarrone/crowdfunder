@@ -34,6 +34,7 @@ class Project < ActiveRecord::Base
       if finished_project.goal <= finished_project.total_dollars_raised
         successful_projects << finished_project
       end
+      successful_projects
     end
   end
 
