@@ -157,5 +157,46 @@ class ProjectTest < ActiveSupport::TestCase
     refute_equal(expected,actual)
   end
 
-  test 'total donations for successful projects'
+  test 'total donations for successful projects' do
+    @project1 = create(:project)
+    @project1.start_date = Time.now.utc - 10.days
+    @project1.end_date = Time.now.utc - 1.days
+    @project1.save
+    @pledge1 = build(:pledge)
+    @pledge1.dollar_amount = 105
+    @pledge1.project = @project1
+    @pledge1.save
+    @project2 = create(:project)
+    @project2.start_date = Time.now.utc - 10.days
+    @project2.end_date = Time.now.utc - 1.days
+    @project2.save
+    @pledge2 = build(:pledge)
+    @pledge2.dollar_amount = 100
+    @pledge2.project = @project2
+    @pledge2.save
+    actual = Project.total_donations_to_successful_projects
+    assert_equal(205, actual)
+  end
+
+  test 'total donations for successful projects where one project does not meet goal' do
+    skip
+    @project1 = create(:project)
+    @project1.start_date = Time.now.utc - 10.days
+    @project1.end_date = Time.now.utc - 1.days
+    @project1.save
+    @pledge1 = build(:pledge)
+    @pledge1.dollar_amount = 105
+    @pledge1.project = @project1
+    @pledge1.save
+    @project2 = create(:project)
+    @project2.start_date = Time.now.utc - 10.days
+    @project2.end_date = Time.now.utc - 1.days
+    @project2.save
+    @pledge2 = build(:pledge)
+    @pledge2.dollar_amount = 50
+    @pledge2.project = @project2
+    @pledge2.save
+    actual = Project.total_donations_to_successful_projects
+    assert_equal(105, actual)
+  end
 end
